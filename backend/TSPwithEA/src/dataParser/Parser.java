@@ -26,7 +26,6 @@ public class Parser {
 
 
             while (!(line = reader.readLine()).equalsIgnoreCase("EOF")){
-                System.out.println(line);
                 loadPoint(line);
             }
 
