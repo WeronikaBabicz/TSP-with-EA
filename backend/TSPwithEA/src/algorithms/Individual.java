@@ -1,10 +1,12 @@
 package algorithms;
 
+import problems.TSProblem;
+
 import java.util.ArrayList;
 
 public class Individual {
     ArrayList<Integer> genotype = new ArrayList<>();
-    TSPProblem problem;
+    TSProblem problem;
 
 
     public double countFitness(){

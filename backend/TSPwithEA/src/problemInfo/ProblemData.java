@@ -1,4 +1,4 @@
-package dataParser;
+package problemInfo;
 
 import java.util.ArrayList;
 

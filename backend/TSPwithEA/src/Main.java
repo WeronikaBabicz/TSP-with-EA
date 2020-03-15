@@ -1,21 +1,22 @@
 import algorithms.EvolutionAlgorithm;
-import algorithms.TSPProblem;
-import algorithms.TSPProblemGeo;
-import algorithms.TSPProblemPlanar;
+import problemInfo.ProblemData;
+import problems.TSProblem;
+import problems.TSProblemGeo;
+import problems.TSProblemPlanar;
 import dataParser.*;
 
 public class Main {
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData x = parser.parse("pr2392.tsp");
-        TSPProblem problem = null;
+        ProblemData problemData = parser.parse("pr2392.tsp");
+        TSProblem problem = null;
 
-        switch (x.problemType){
+        switch (problemData.problemType){
             case PLANAR:
-                problem = new TSPProblemPlanar(x.points);
+                problem = new TSProblemPlanar(problemData.points);
                 break;
             case GEO:
-                problem = new TSPProblemGeo(x.points);
+                problem = new TSProblemGeo(problemData.points);
                 break;
         }
 

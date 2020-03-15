@@ -1,5 +1,9 @@
 package dataParser;
 
+import problemInfo.Point;
+import problemInfo.ProblemData;
+import problemInfo.ProblemType;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -7,13 +11,13 @@ import java.util.StringTokenizer;
 
 public class Parser {
 
-    private ProblemType problemType;
+    private ProblemType problemType = ProblemType.PLANAR; // TODO: think
     ArrayList<Point> points = new ArrayList<>();
 
     public ProblemData parse(String fileName) {
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(new File(getClass().getClassLoader().getResource("TSPdata/"+fileName).getFile())));
+            reader = new BufferedReader(new FileReader(new File(getClass().getClassLoader().getResource("TSPdata/" +fileName).getFile())));
 
             String line;
             while (!(line = reader.readLine()).equalsIgnoreCase("NODE_COORD_SECTION")) {
@@ -24,12 +28,13 @@ public class Parser {
                     problemType = ProblemType.PLANAR;
             }
 
-            while (!(line = reader.readLine()).equalsIgnoreCase("EOF")){
+            while (!(line = reader.readLine()).equalsIgnoreCase("EOF"))
                 loadPoint(line);
-            }
+
             reader.close();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

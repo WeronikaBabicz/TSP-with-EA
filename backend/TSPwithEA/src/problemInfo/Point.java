@@ -1,4 +1,4 @@
-package dataParser;
+package problemInfo;
 
 public class Point {
     private double x;

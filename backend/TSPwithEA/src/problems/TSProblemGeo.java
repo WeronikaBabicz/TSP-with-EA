@@ -1,11 +1,11 @@
-package algorithms;
+package problems;
 
-import dataParser.Point;
+import problemInfo.Point;
 import java.util.ArrayList;
 
-public class TSPProblemGeo extends TSPProblem{
+public class TSProblemGeo extends TSProblem {
 
-    public TSPProblemGeo(ArrayList<Point> allPoints) {
+    public TSProblemGeo(ArrayList<Point> allPoints) {
         this.allPoints = allPoints;
     }
 

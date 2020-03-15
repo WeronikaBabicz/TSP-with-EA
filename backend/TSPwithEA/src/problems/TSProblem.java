@@ -1,16 +1,14 @@
-package algorithms;
+package problems;
 
-import dataParser.Point;
+import problemInfo.Point;
 
 import java.util.ArrayList;
 
-public abstract class TSPProblem {
-    ArrayList<Point> allPoints = new ArrayList<>();
-    private ArrayList<Point> visitedPoints = new ArrayList<>();
+public abstract class TSProblem {
+    public ArrayList<Point> allPoints = new ArrayList<>();
 
-
-    double countFitness(ArrayList<Integer> genotype){
-        this.setVisitedPoints(genotype);
+    public double countFitness(ArrayList<Integer> genotype){
+        ArrayList<Point> visitedPoints = setVisitedPoints(genotype);
         double fitnessScore = 0;
         for (int i = 0; i < visitedPoints.size() - 1; i++){
             fitnessScore += countDistanceBetweenPoints(visitedPoints.get(i), visitedPoints.get(i+1));
@@ -19,11 +17,12 @@ public abstract class TSPProblem {
         return fitnessScore;
     };
 
-    private void setVisitedPoints(ArrayList<Integer> genotype){
-        visitedPoints = allPoints;
-        for (int i = 0; i < allPoints.size(); i++){
+    private ArrayList<Point> setVisitedPoints(ArrayList<Integer> genotype){
+        ArrayList<Point> visitedPoints = allPoints; //TODO: find better way (complexity), lambda?
+        for (int i = 0; i < visitedPoints.size(); i++){
             visitedPoints.set(genotype.get(i), allPoints.get(i));
         }
+        return visitedPoints;
     }
 
     abstract public double countDistanceBetweenPoints(Point p1, Point p2);

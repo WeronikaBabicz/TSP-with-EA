@@ -1,12 +1,12 @@
-package algorithms;
+package problems;
 
-import dataParser.Point;
+import problemInfo.Point;
 
 import java.util.ArrayList;
 
-public class TSPProblemPlanar extends TSPProblem{
+public class TSProblemPlanar extends TSProblem {
 
-    public TSPProblemPlanar(ArrayList<Point> allPoints) {
+    public TSProblemPlanar(ArrayList<Point> allPoints) {
         this.allPoints = allPoints;
     }
 
