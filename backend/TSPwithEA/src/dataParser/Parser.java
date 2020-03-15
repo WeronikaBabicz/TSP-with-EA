@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Parser {
 
-    private ProblemType problemType = ProblemType.PLANAR; // Should it stay as a default?
+    private ProblemType problemType;
     ArrayList<Point> points = new ArrayList<>();
 
     public ProblemData parse(String fileName) {
@@ -16,27 +16,22 @@ public class Parser {
             reader = new BufferedReader(new FileReader(new File(getClass().getClassLoader().getResource("TSPdata/"+fileName).getFile())));
 
             String line;
-            while (!(line = reader.readLine()).equalsIgnoreCase("NODE_COORD_SECTION")){
+            while (!(line = reader.readLine()).equalsIgnoreCase("NODE_COORD_SECTION")) {
                 if (line.equalsIgnoreCase("EDGE_WEIGHT_TYPE: GEO"))
                     problemType = ProblemType.GEO;
 
-                else if (line.equalsIgnoreCase("EDGE_WEIGHT_TYPE: EUC_2D"))
+                else if (line.equalsIgnoreCase("EDGE_WEIGHT_TYPE : EUC_2D") || line.equalsIgnoreCase("EDGE_WEIGHT_TYPE: EUC_2D"))
                     problemType = ProblemType.PLANAR;
             }
-
 
             while (!(line = reader.readLine()).equalsIgnoreCase("EOF")){
                 loadPoint(line);
             }
-
-
-
             reader.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return new ProblemData(points, problemType);
     }
