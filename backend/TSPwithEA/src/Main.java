@@ -6,6 +6,7 @@ import problems.TSProblemPlanar;
 import dataParser.*;
 
 public class Main {
+
     public static void main(String[] args) {
         Parser parser = new Parser();
         ProblemData problemData = parser.parse("pr2392.tsp");

@@ -4,20 +4,14 @@
     <list default="true" id="5e671876-5111-4651-80d6-cef2b02e2e10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/ProblemData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/ProblemType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/EvolutionAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/EvolutionAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/Individual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/Individual.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/problems/TSPProblem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/problems/TSPProblemGeo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/problems/TSPProblemPlanar.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/TSPProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/TSPProblemGeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemGeo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/TSPProblemPlanar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemPlanar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataParser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataParser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataParser/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problemInfo/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataParser/ProblemData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problemInfo/ProblemData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataParser/ProblemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problemInfo/ProblemType.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +34,7 @@
   <component name="ProjectId" id="1Z2MWRB8pw5t6KEx7beqnBO9YqJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../lab1Si_242354_DawidKapica/lab1Si" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">

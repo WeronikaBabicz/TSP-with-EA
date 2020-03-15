@@ -4,19 +4,19 @@ import problems.TSProblem;
 
 import java.util.ArrayList;
 
-public class EvolutionAlgorithm  implements Algorithm{
-    private ArrayList<Individual> population = new ArrayList<Individual>();
-    private TSProblem problem;
+public class GreedyAlgorithm implements Algorithm {
     private Individual bestIndividual;
+    private TSProblem problem;
+    private ArrayList<Individual> population = new ArrayList<Individual>();
 
     int populationSize = 1;
     int generations = 1;
 
-    public EvolutionAlgorithm(TSProblem problem) {
+    public GreedyAlgorithm(TSProblem problem) {
         this.problem = problem;
     }
 
-    public EvolutionAlgorithm(TSProblem problem, int populationSize, int generations) {
+    public GreedyAlgorithm(TSProblem problem, int populationSize, int generations) {
         this.problem = problem;
         this.populationSize = populationSize;
         this.generations = generations;
@@ -41,19 +41,6 @@ public class EvolutionAlgorithm  implements Algorithm{
 
     @Override
     public void runAlgorithm() {
-        /*
-        initialize population
-        for generations
-            selection
-            crossover
-            mutation
-            find best
 
-
-         */
     }
-
-
-
-
 }
