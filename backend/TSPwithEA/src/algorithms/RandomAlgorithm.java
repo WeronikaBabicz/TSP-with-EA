@@ -4,6 +4,7 @@ import problems.TSProblem;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class RandomAlgorithm implements Algorithm {
     private Individual bestIndividual;
@@ -36,12 +37,7 @@ public class RandomAlgorithm implements Algorithm {
 
     @Override
     public Individual findBestIndividual() {
-        Individual best = population.get(0);
-        for (int i = 0; i < population.size(); i++){
-            if (best.countFitness() < population.get(i).countFitness())
-                best = population.get(i);
-        }
-        return best;
+        return Collections.max(population, Comparator.comparingDouble(Individual::countFitness));
     }
 
     @Override
