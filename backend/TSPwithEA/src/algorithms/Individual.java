@@ -22,4 +22,10 @@ public class Individual {
     public void setGenotype(ArrayList<Integer> genotype) {
         this.genotype = genotype;
     }
+
+    public void printGenotype(){
+        for (int i = 0; i < genotype.size(); i++){
+            System.out.print(genotype.get(i) + " ");
+        }
+    }
 }

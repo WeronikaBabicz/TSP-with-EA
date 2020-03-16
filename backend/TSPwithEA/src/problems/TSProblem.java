@@ -13,9 +13,9 @@ public abstract class TSProblem {
         for (int i = 0; i < visitedPoints.size() - 1; i++){
             fitnessScore += countDistanceBetweenPoints(visitedPoints.get(i), visitedPoints.get(i+1));
         }
-        fitnessScore += countDistanceBetweenPoints(visitedPoints.get(visitedPoints.size()), visitedPoints.get(0));
+        fitnessScore += countDistanceBetweenPoints(visitedPoints.get(visitedPoints.size() - 1), visitedPoints.get(0));
         return fitnessScore;
-    };
+    }
 
     private ArrayList<Point> setVisitedPoints(ArrayList<Integer> genotype){
         ArrayList<Point> visitedPoints = allPoints; //TODO: find better way (complexity), lambda?

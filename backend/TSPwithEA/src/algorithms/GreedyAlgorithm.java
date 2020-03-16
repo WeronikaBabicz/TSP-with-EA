@@ -4,7 +4,6 @@ import problemInfo.Point;
 import problems.TSProblem;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -47,7 +46,7 @@ public class GreedyAlgorithm implements Algorithm {
 
     @Override
     public Individual findBestIndividual() {
-        return Collections.max(population, Comparator.comparingDouble(Individual::countFitness));
+        return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
     }
 
     @Override
@@ -74,6 +73,11 @@ public class GreedyAlgorithm implements Algorithm {
         }
     }
 
+    @Override
+    public Individual getResult() {
+        System.out.println(bestIndividual.countFitness());
+        return bestIndividual;
+    }
 
 
     private void setGene(ArrayList<Integer> genotype, int indexPoint){
@@ -86,14 +90,15 @@ public class GreedyAlgorithm implements Algorithm {
 
     private int findClosestPoint(ArrayList<Integer> genotype, ArrayList<Integer> pointsToVisit){
         int closest = pointsToVisit.get(0);
-        Point lastVisited = problem.allPoints.get(genotype.get(genotype.size()));
+
+        Point lastVisited = problem.allPoints.get(genotype.get(genotype.size() - 1));
         Point nextToVisit = problem.allPoints.get(pointsToVisit.get(0));
 
         double bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
 
         for (int j = 0; j < pointsToVisit.size(); j++){
-            nextToVisit = problem.allPoints.get(pointsToVisit.get(j));
-            if (bestDist < problem.countDistanceBetweenPoints(lastVisited, nextToVisit)){
+            nextToVisit = problem.allPoints.get(pointsToVisit.get(j)); //4
+            if (bestDist > problem.countDistanceBetweenPoints(lastVisited, nextToVisit)){
                 closest = pointsToVisit.get(j);
                 bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
             }
@@ -114,7 +119,6 @@ public class GreedyAlgorithm implements Algorithm {
     private ArrayList<Integer> initializePointsToVisit(){
         ArrayList<Integer> pointsToVisit = new ArrayList<Integer>();
         fillRange(pointsToVisit, problem.allPoints.size());
-
         return  pointsToVisit;
     }
 

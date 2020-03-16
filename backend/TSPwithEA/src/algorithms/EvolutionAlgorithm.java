@@ -53,7 +53,10 @@ public class EvolutionAlgorithm  implements Algorithm{
          */
     }
 
-
+    @Override
+    public Individual getResult() {
+        return null;
+    }
 
 
 }

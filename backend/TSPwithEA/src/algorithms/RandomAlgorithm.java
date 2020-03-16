@@ -37,7 +37,7 @@ public class RandomAlgorithm implements Algorithm {
 
     @Override
     public Individual findBestIndividual() {
-        return Collections.max(population, Comparator.comparingDouble(Individual::countFitness));
+        return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
     }
 
     @Override
@@ -62,6 +62,11 @@ public class RandomAlgorithm implements Algorithm {
         }
     }
 
+    @Override
+    public Individual getResult() {
+        System.out.println(bestIndividual.countFitness());
+        return bestIndividual;
+    }
 
 
     private void setBestIndividual(Individual bestIndividual){

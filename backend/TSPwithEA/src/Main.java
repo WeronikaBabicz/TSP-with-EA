@@ -1,4 +1,6 @@
 import algorithms.EvolutionAlgorithm;
+import algorithms.GreedyAlgorithm;
+import algorithms.RandomAlgorithm;
 import problemInfo.ProblemData;
 import problems.TSProblem;
 import problems.TSProblemGeo;
@@ -9,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData problemData = parser.parse("pr2392.tsp");
+        ProblemData problemData = parser.parse("berlin11_modified.tsp");
         TSProblem problem = null;
 
         switch (problemData.problemType){
@@ -22,5 +24,15 @@ public class Main {
         }
 
         EvolutionAlgorithm ea = new EvolutionAlgorithm(problem);
+        GreedyAlgorithm ga = new GreedyAlgorithm(problem, 1);
+        ga.runAlgorithm();
+
+        RandomAlgorithm ra = new RandomAlgorithm(problem);
+        ra.runAlgorithm();
+
+        ga.getResult().printGenotype();
+        System.out.println();
+        ra.getResult().printGenotype();
+
     }
 }
