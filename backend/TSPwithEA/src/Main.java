@@ -22,9 +22,8 @@ public class Main {
                 problem = new TSProblemGeo(problemData.points);
                 break;
         }
-
         EvolutionAlgorithm ea = new EvolutionAlgorithm(problem);
-        GreedyAlgorithm ga = new GreedyAlgorithm(problem, 1);
+        GreedyAlgorithm ga = new GreedyAlgorithm(problem, 10);
         ga.runAlgorithm();
 
         RandomAlgorithm ra = new RandomAlgorithm(problem);
@@ -33,6 +32,5 @@ public class Main {
         ga.getResult().printGenotype();
         System.out.println();
         ra.getResult().printGenotype();
-
     }
 }
