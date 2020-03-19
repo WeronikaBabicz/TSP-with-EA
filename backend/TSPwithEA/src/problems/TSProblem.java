@@ -9,6 +9,7 @@ public abstract class TSProblem {
 
     public double countFitness(ArrayList<Integer> genotype){
         ArrayList<Point> visitedPoints = setVisitedPoints(genotype);
+
         double fitnessScore = 0;
         for (int i = 0; i < visitedPoints.size() - 1; i++){
             fitnessScore += countDistanceBetweenPoints(visitedPoints.get(i), visitedPoints.get(i+1));
@@ -18,10 +19,10 @@ public abstract class TSProblem {
     }
 
     private ArrayList<Point> setVisitedPoints(ArrayList<Integer> genotype){
-        ArrayList<Point> visitedPoints = allPoints; //TODO: find better way (complexity), lambda?
-        for (int i = 0; i < visitedPoints.size(); i++){
-            visitedPoints.set(genotype.get(i), allPoints.get(i));
-        }
+        ArrayList<Point> visitedPoints = new ArrayList<Point>();
+        for (int i = 0; i < allPoints.size(); i++)
+            visitedPoints.add(allPoints.get(genotype.get(i)));
+
         return visitedPoints;
     }
 
