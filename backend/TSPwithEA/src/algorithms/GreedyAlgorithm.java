@@ -6,31 +6,24 @@ import problems.TSProblem;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 public class GreedyAlgorithm implements Algorithm {
     private Individual bestIndividual;
     private TSProblem problem;
     private ArrayList<Individual> population = new ArrayList<Individual>();
 
-    int populationSize = 1;
-    int generations = 1;
-    private int startPointIndex = 0;
+    private int numberOfAlgorithmRuns = 10;
+    private int startPointIndex;
 
     public GreedyAlgorithm(TSProblem problem) {
         this.problem = problem;
     }
 
-    public GreedyAlgorithm(TSProblem problem, int populationSize, int generations, int startPointIndex) {
-        this.problem = problem;
-        this.populationSize = populationSize;
-        this.generations = generations;
-        this.startPointIndex = startPointIndex;
 
-    }
-
-    public GreedyAlgorithm(TSProblem problem, int startPointIndex) {
+    public GreedyAlgorithm(TSProblem problem, int numberOfAlgorithmRuns) {
         this.problem = problem;
-        this.startPointIndex = startPointIndex;
+        this.numberOfAlgorithmRuns = numberOfAlgorithmRuns;
     }
 
     public void setProblem(TSProblem problem) {
@@ -38,7 +31,7 @@ public class GreedyAlgorithm implements Algorithm {
     }
 
     public void setStartPointIndex(int startPointIndex) {
-        this.startPointIndex = startPointIndex;
+        this.numberOfAlgorithmRuns = numberOfAlgorithmRuns;
     }
 
 
@@ -51,13 +44,15 @@ public class GreedyAlgorithm implements Algorithm {
 
     @Override
     public void initializePopulation() {
-        for (int i = 0; i < populationSize; i++){
+        ArrayList<Integer> startingPoints = initializePointsToVisit();
+        for (int i = 0; i < numberOfAlgorithmRuns; i++){
             Individual individual = new Individual(problem);
             ArrayList<Integer> genotype = new ArrayList<Integer>();
-
             ArrayList<Integer> pointsToVisit = initializePointsToVisit();
 
-            fillFirstGene(genotype, pointsToVisit);
+            startPointIndex = startingPoints.get((int) (Math.random() * startingPoints.size()));
+
+            fillFirstGene(genotype, pointsToVisit, startingPoints);
             fillGenotype(genotype, pointsToVisit);
 
             individual.setGenotype(genotype);
@@ -67,10 +62,8 @@ public class GreedyAlgorithm implements Algorithm {
 
     @Override
     public void runAlgorithm() {
-        for (int i = 0; i < generations; i++){
-            initializePopulation();
-            setBestIndividual(findBestIndividual());
-        }
+        initializePopulation();
+        setBestIndividual(findBestIndividual());
     }
 
     @Override
@@ -97,7 +90,7 @@ public class GreedyAlgorithm implements Algorithm {
         double bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
 
         for (int j = 0; j < pointsToVisit.size(); j++){
-            nextToVisit = problem.allPoints.get(pointsToVisit.get(j)); //4
+            nextToVisit = problem.allPoints.get(pointsToVisit.get(j));
             if (bestDist > problem.countDistanceBetweenPoints(lastVisited, nextToVisit)){
                 closest = pointsToVisit.get(j);
                 bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
@@ -122,9 +115,10 @@ public class GreedyAlgorithm implements Algorithm {
         return  pointsToVisit;
     }
 
-    private void fillFirstGene(ArrayList<Integer> genotype, ArrayList<Integer> pointsToVisit){
+    private void fillFirstGene(ArrayList<Integer> genotype, ArrayList<Integer> pointsToVisit, ArrayList<Integer> startingPoints){
         fillGene(genotype, pointsToVisit, startPointIndex);
-    }
+        markPointAsVisited(startingPoints, startPointIndex);
+}
 
     private void fillGene(ArrayList<Integer> genotype, ArrayList<Integer> pointsToVisit, int indexPoint){
         setGene(genotype, indexPoint);
