@@ -100,10 +100,6 @@ public class GreedyAlgorithm implements Algorithm {
         return closest;
     }
 
-    private void fillRange(ArrayList<Integer> arrayList, int max){
-        for (int i = 0; i < max; i ++)
-            arrayList.add(i);
-    }
 
     private void markPointAsVisited(ArrayList<Integer> pointsToVisit ,int pointIndex){
         pointsToVisit.remove(Integer.valueOf(pointIndex));

@@ -30,6 +30,7 @@ public class Main {
         ra.runAlgorithm();
 
         ga.getResult().printGenotype();
+
         System.out.println();
         ra.getResult().printGenotype();
     }

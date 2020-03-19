@@ -73,9 +73,6 @@ public class RandomAlgorithm implements Algorithm {
         this.bestIndividual = bestIndividual;
     }
 
-    private void fillRange(ArrayList<Integer> arrayList, int max){
-        for (int i = 0; i < max; i ++)
-            arrayList.add(i);
-    }
+
 
 }

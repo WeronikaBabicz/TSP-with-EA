@@ -9,8 +9,8 @@ public class EvolutionAlgorithm  implements Algorithm{
     private TSProblem problem;
     private Individual bestIndividual;
 
-    int populationSize = 1;
-    int generations = 1;
+    int populationSize = 100;
+    int generations = 100;
 
     public EvolutionAlgorithm(TSProblem problem) {
         this.problem = problem;
@@ -36,7 +36,9 @@ public class EvolutionAlgorithm  implements Algorithm{
 
     @Override
     public void initializePopulation() {
+        while (population.size() < populationSize){
 
+        }
     }
 
     @Override
