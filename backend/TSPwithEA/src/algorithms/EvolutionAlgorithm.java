@@ -49,7 +49,6 @@ public class EvolutionAlgorithm  implements Algorithm{
             mutation
             find best
 
-
          */
     }
 
