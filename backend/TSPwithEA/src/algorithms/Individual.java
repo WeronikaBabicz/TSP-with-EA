@@ -30,9 +30,12 @@ public class Individual implements Cloneable{
         this.genotype = genotype;
     }
 
-    public void printGenotype(){
+    @Override
+    public String toString(){
+        String ret = "";
         for (int i = 0; i < genotype.size(); i++){
-            System.out.print(genotype.get(i) + " ");
+            ret += genotype.get(i) + " ";
         }
+        return ret;
     }
 }
