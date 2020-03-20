@@ -126,9 +126,9 @@ public class EvolutionAlgorithm  implements Algorithm{
 
 
     private void reproduce(ArrayList<Individual> selectedIndividualsToReproduce, ArrayList<Individual> newPopulation){
-        for (int j = 0; j < selectedIndividualsToReproduce.size(); j++){ // TODO: try better?
-            for(int k = 0; k < selectedIndividualsToReproduce.size() && k != j; k++){
-                newPopulation.add(crossover(selectedIndividualsToReproduce.get(j), selectedIndividualsToReproduce.get(k)));
+        for (int i = 0; i < selectedIndividualsToReproduce.size(); i++){ // TODO: try better?
+            for(int j = 0; j < selectedIndividualsToReproduce.size() && j != i; j++){
+                newPopulation.add(crossover(selectedIndividualsToReproduce.get(i), selectedIndividualsToReproduce.get(j)));
             }
         }
     }

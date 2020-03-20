@@ -18,6 +18,10 @@ public class Individual implements Cloneable{
         //this.genotype = new ArrayList<>(another.genotype);
     }
 
+    public ArrayList<Integer> getGenotype() {
+        return genotype;
+    }
+
     public double countFitness(){
         return problem.countFitness(genotype);
     }
