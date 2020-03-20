@@ -127,7 +127,7 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private void fillPopulation(ArrayList<Individual> newPopulation){
-        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * 0.02));
+        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * 0.05));
         newPopulation.addAll(best);
         while (newPopulation.size() < populationSize){
             newPopulation.add(new Individual(population.get((int)(Math.random() * populationSize))));
