@@ -4,7 +4,7 @@ import problems.TSProblem;
 
 import java.util.ArrayList;
 
-public class Individual {
+public class Individual implements Cloneable{
     private ArrayList<Integer> genotype = new ArrayList<>();
     private TSProblem problem;
 
@@ -12,8 +12,10 @@ public class Individual {
         this.problem = problem;
     }
 
-
-
+    public Individual(Individual another) {
+        this.problem = another.problem;
+        this.genotype = new ArrayList<>(another.genotype);
+    }
 
     public double countFitness(){
         return problem.countFitness(genotype);
