@@ -14,7 +14,8 @@ public class Individual implements Cloneable{
 
     public Individual(Individual another) {
         this.problem = another.problem;
-        this.genotype = new ArrayList<>(another.genotype);
+        this.genotype = (ArrayList<Integer>) another.genotype.clone(); // Hope it's a deep copy
+        //this.genotype = new ArrayList<>(another.genotype);
     }
 
     public double countFitness(){
