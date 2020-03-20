@@ -2,6 +2,7 @@ package algorithms;
 
 import algorithms.crossover.Crossover;
 import algorithms.mutation.Mutation;
+import algorithms.selection.BestSelection;
 import algorithms.selection.Selection;
 import problems.TSProblem;
 
@@ -119,8 +120,9 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private void fillPopulation(ArrayList<Individual> newPopulation){
-        while (newPopulation.size() < populationSize){ // TODO: (optimization) if older generations are not needed it doesn't have to be a deep copy
-            newPopulation.add(new Individual(population.get((int)(Math.random() * populationSize))));
+        ArrayList<Individual> best = selectionBest(populationSize - newPopulation.size());
+        for (Individual individual : best) {
+            newPopulation.add(new Individual(individual));
         }
     }
 
@@ -152,6 +154,10 @@ public class EvolutionAlgorithm  implements Algorithm{
         return Math.random() < prob;
     }
 
+    private ArrayList<Individual> selectionBest(int n){
+        Selection bestSelection = new BestSelection();
+        return bestSelection.select(n, population);
+    }
 
 
     private void setBestIndividual(Individual bestIndividual){
