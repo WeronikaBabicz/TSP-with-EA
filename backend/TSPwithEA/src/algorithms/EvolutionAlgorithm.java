@@ -22,8 +22,8 @@ public class EvolutionAlgorithm  implements Algorithm{
     private Mutation mutationMethod;
     private Selection selectionMethod;
 
-    int populationSize = 100;
-    int generations = 100;
+    int populationSize = 1200;
+    int generations = 1000;
 
     public EvolutionAlgorithm(TSProblem problem) {
         this.problem = problem;
@@ -92,6 +92,7 @@ public class EvolutionAlgorithm  implements Algorithm{
     @Override
     public void runAlgorithm() {
         initializePopulation();
+        setBestIndividual(findBestIndividual());
 
         for (int i = 0; i < generations; i++){
             ArrayList<Individual> newPopulation = new ArrayList<Individual>();
@@ -104,7 +105,13 @@ public class EvolutionAlgorithm  implements Algorithm{
             allGenerations.add((ArrayList<Individual>) population.clone());
             population = newPopulation;  // TODO: ????
 
-            setBestIndividual(findBestIndividual());
+            Individual currentBest = findBestIndividual();
+            if (currentBest.countFitness() < bestIndividual.countFitness()){
+                setBestIndividual(currentBest);
+                System.out.println("found best! In generation: "+ i);
+                System.out.println(currentBest.countFitness());
+            }
+
         }
     }
 
@@ -129,8 +136,9 @@ public class EvolutionAlgorithm  implements Algorithm{
 
     private void reproduce(ArrayList<Individual> selectedIndividualsToReproduce, ArrayList<Individual> newPopulation){
         for (int i = 0; i < selectedIndividualsToReproduce.size(); i++){ // TODO: try better?
-            for(int j = 0; j < selectedIndividualsToReproduce.size() && j != i; j++){
-                newPopulation.add(crossover(selectedIndividualsToReproduce.get(i), selectedIndividualsToReproduce.get(j)));
+            for(int j = 0; j < selectedIndividualsToReproduce.size(); j++){
+                if (i != j)
+                    newPopulation.add(crossover(selectedIndividualsToReproduce.get(i), selectedIndividualsToReproduce.get(j)));
             }
         }
     }
