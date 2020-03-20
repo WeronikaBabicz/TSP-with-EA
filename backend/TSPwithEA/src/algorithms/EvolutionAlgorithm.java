@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 public class EvolutionAlgorithm  implements Algorithm{
     private ArrayList<Individual> population = new ArrayList<Individual>();
-    private ArrayList<ArrayList<Individual>> allGenerations = new ArrayList<ArrayList<Individual>>();
+    private ArrayList<Individual> prevPopulation = new ArrayList<Individual>();
     private TSProblem problem;
     private Individual bestIndividual;
     private double mutationProb = 0.1;
@@ -102,7 +102,7 @@ public class EvolutionAlgorithm  implements Algorithm{
             fillPopulation(newPopulation);
             mutatePopulation(newPopulation);
 
-            allGenerations.add((ArrayList<Individual>) population.clone());
+            prevPopulation = new ArrayList<>(population);
             population = newPopulation;  // TODO: ????
 
             Individual currentBest = findBestIndividual();
@@ -127,19 +127,18 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private void fillPopulation(ArrayList<Individual> newPopulation){
-        ArrayList<Individual> best = selectionBest(populationSize - newPopulation.size());
-        for (Individual individual : best) {
-            newPopulation.add(new Individual(individual));
+        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * 0.02));
+        newPopulation.addAll(best);
+        while (newPopulation.size() < populationSize){
+            newPopulation.add(new Individual(population.get((int)(Math.random() * populationSize))));
         }
     }
 
 
     private void reproduce(ArrayList<Individual> selectedIndividualsToReproduce, ArrayList<Individual> newPopulation){
-        for (int i = 0; i < selectedIndividualsToReproduce.size(); i++){ // TODO: try better?
-            for(int j = 0; j < selectedIndividualsToReproduce.size(); j++){
-                if (i != j)
-                    newPopulation.add(crossover(selectedIndividualsToReproduce.get(i), selectedIndividualsToReproduce.get(j)));
-            }
+        for (Individual ind : selectedIndividualsToReproduce){
+            int other = (int) (Math.random() * selectedIndividualsToReproduce.size());
+            newPopulation.add(crossover(ind, selectedIndividualsToReproduce.get(other)));
         }
     }
 
