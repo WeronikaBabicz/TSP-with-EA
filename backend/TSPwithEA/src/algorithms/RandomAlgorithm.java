@@ -64,7 +64,6 @@ public class RandomAlgorithm implements Algorithm {
 
     @Override
     public Individual getResult() {
-        System.out.println(bestIndividual.countFitness());
         return bestIndividual;
     }
 
