@@ -3,6 +3,7 @@ package algorithms.crossover;
 import algorithms.Individual;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderedCrossover implements Crossover{
 
@@ -20,7 +21,7 @@ public class OrderedCrossover implements Crossover{
     }
 
     private void changeGenes(ArrayList<Integer> genotype, int startIndex, int endIndex, Individual parent2){
-        ArrayList<Integer> notUsedGenes = ((ArrayList<Integer>) parent2.getGenotype().clone());
+        List<Integer> notUsedGenes = ((List<Integer>) parent2.getGenotype().clone());
         notUsedGenes.removeIf(n -> genotype.subList(startIndex, endIndex + 1).contains(n)); // [1 2 3 4] sub(1,3): [2 3]
 
         for (int i = 0; i < genotype.size() && (i < startIndex || i > endIndex); i++){
