@@ -11,19 +11,20 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class EvolutionAlgorithm  implements Algorithm{
+    private static final double percentOfBest = 0.002;
+
     private ArrayList<Individual> population = new ArrayList<Individual>();
-    private ArrayList<Individual> prevPopulation = new ArrayList<Individual>();
     private TSProblem problem;
     private Individual bestIndividual;
-    private double mutationProb = 0.1;
-    private double crossoverProb = 0.7;
-    private int numberOfIndividualsForSelection = 9;
+    private double mutationProb = 0.15;
+    private double crossoverProb = 0.8;
+    private int individualsToReproduce = 200;
     private Crossover crossoverMethod;
     private Mutation mutationMethod;
     private Selection selectionMethod;
 
-    int populationSize = 1200;
-    int generations = 1000;
+    private int populationSize = 1500;
+    private int generations = 1000;
 
     public EvolutionAlgorithm(TSProblem problem) {
         this.problem = problem;
@@ -42,11 +43,11 @@ public class EvolutionAlgorithm  implements Algorithm{
         this.selectionMethod = selectionMethod;
     }
 
-    public EvolutionAlgorithm(TSProblem problem, double mutationProb, double crossoverProb, int numberOfIndividualsForSelection, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod, int populationSize, int generations) {
+    public EvolutionAlgorithm(TSProblem problem, double mutationProb, double crossoverProb, int individualsToReproduce, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod, int populationSize, int generations) {
         this.problem = problem;
         this.mutationProb = mutationProb;
         this.crossoverProb = crossoverProb;
-        this.numberOfIndividualsForSelection = numberOfIndividualsForSelection;
+        this.individualsToReproduce = individualsToReproduce;
         this.crossoverMethod = crossoverMethod;
         this.mutationMethod = mutationMethod;
         this.selectionMethod = selectionMethod;
@@ -102,8 +103,7 @@ public class EvolutionAlgorithm  implements Algorithm{
             fillPopulation(newPopulation);
             mutatePopulation(newPopulation);
 
-            prevPopulation = new ArrayList<>(population);
-            population = newPopulation;  // TODO: ????
+            population = newPopulation;
 
             Individual currentBest = findBestIndividual();
             if (currentBest.countFitness() < bestIndividual.countFitness()){
@@ -127,7 +127,7 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private void fillPopulation(ArrayList<Individual> newPopulation){
-        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * 0.05));
+        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * percentOfBest));
         newPopulation.addAll(best);
         while (newPopulation.size() < populationSize){
             newPopulation.add(new Individual(population.get((int)(Math.random() * populationSize))));
@@ -138,7 +138,8 @@ public class EvolutionAlgorithm  implements Algorithm{
     private void reproduce(ArrayList<Individual> selectedIndividualsToReproduce, ArrayList<Individual> newPopulation){
         for (Individual ind : selectedIndividualsToReproduce){
             int other = (int) (Math.random() * selectedIndividualsToReproduce.size());
-            newPopulation.add(crossover(ind, selectedIndividualsToReproduce.get(other)));
+            if (other != selectedIndividualsToReproduce.indexOf(ind))
+                newPopulation.add(crossover(ind, selectedIndividualsToReproduce.get(other)));
         }
     }
 
@@ -154,7 +155,7 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private ArrayList<Individual> selection(){
-        return selectionMethod.select(numberOfIndividualsForSelection, population);
+        return selectionMethod.select(individualsToReproduce, population);
     }
 
     private boolean isBeingDone(double prob){
