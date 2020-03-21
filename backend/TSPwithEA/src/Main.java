@@ -6,6 +6,7 @@ import algorithms.crossover.OrderedCrossover;
 import algorithms.mutation.InverseMutation;
 import algorithms.mutation.Mutation;
 import algorithms.mutation.SwapMutation;
+import algorithms.selection.BestSelection;
 import algorithms.selection.RouletteSelection;
 import algorithms.selection.Selection;
 import algorithms.selection.TournamentSelection;
@@ -16,6 +17,8 @@ import problems.TSProblemPlanar;
 import dataParser.*;
 
 public class Main {
+
+    public static final double points = 10.0;
 
     public static void main(String[] args) {
         Parser parser = new Parser();
@@ -56,5 +59,6 @@ public class Main {
         System.out.println("RANDOM:");
         System.out.println(ra.getResult().countFitness());
         System.out.println(ra.getResult());
+
     }
 }
