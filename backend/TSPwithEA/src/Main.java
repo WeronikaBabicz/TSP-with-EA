@@ -1,6 +1,14 @@
 import algorithms.EvolutionAlgorithm;
 import algorithms.GreedyAlgorithm;
 import algorithms.RandomAlgorithm;
+import algorithms.crossover.Crossover;
+import algorithms.crossover.OrderedCrossover;
+import algorithms.mutation.InverseMutation;
+import algorithms.mutation.Mutation;
+import algorithms.mutation.SwapMutation;
+import algorithms.selection.RouletteSelection;
+import algorithms.selection.Selection;
+import algorithms.selection.TournamentSelection;
 import problemInfo.ProblemData;
 import problems.TSProblem;
 import problems.TSProblemGeo;
@@ -11,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData problemData = parser.parse("berlin11_modified.tsp");
+        ProblemData problemData = parser.parse("kroA100.tsp");
         TSProblem problem = null;
 
         switch (problemData.problemType){
@@ -22,16 +30,31 @@ public class Main {
                 problem = new TSProblemGeo(problemData.points);
                 break;
         }
-        EvolutionAlgorithm ea = new EvolutionAlgorithm(problem);
+        Crossover crossover = new OrderedCrossover();
+        Mutation mutation = new InverseMutation();
+        Selection selection = new RouletteSelection();
+
+        EvolutionAlgorithm ea = new EvolutionAlgorithm(problem, crossover, mutation, selection);
+        ea.runAlgorithm();
+
         GreedyAlgorithm ga = new GreedyAlgorithm(problem, 10);
         ga.runAlgorithm();
 
         RandomAlgorithm ra = new RandomAlgorithm(problem);
         ra.runAlgorithm();
 
-        ga.getResult().printGenotype();
 
         System.out.println();
-        ra.getResult().printGenotype();
+        System.out.println("EVOLUTION:");
+        System.out.println(ea.getResult().countFitness());
+        System.out.println(ea.getResult());
+
+        System.out.println("GREEDY:");
+        System.out.println(ga.getResult().countFitness());
+        System.out.println(ga.getResult());
+
+        System.out.println("RANDOM:");
+        System.out.println(ra.getResult().countFitness());
+        System.out.println(ra.getResult());
     }
 }

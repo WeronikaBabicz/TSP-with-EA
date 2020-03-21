@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5e671876-5111-4651-80d6-cef2b02e2e10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/GreedyAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/algorithms/GreedyAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/dataParser/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/problemInfo/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/problemInfo/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TSPwithEA/problems/TSProblem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TSPwithEA/problems/TSProblem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
