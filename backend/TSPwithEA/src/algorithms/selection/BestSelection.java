@@ -12,14 +12,13 @@ public class BestSelection implements Selection {
         ArrayList<Individual> selectFrom = (ArrayList<Individual>) population.clone();
         ArrayList<Individual> selectedIndividuals = new ArrayList<Individual>();
         for (int i = 0; i < numberOfIndividualsForSelection; i++){
-            selectedIndividuals.add(selectIndividual(numberOfIndividualsForSelection, selectFrom));
+            selectedIndividuals.add(selectIndividual(selectFrom));
             selectFrom.removeIf(selectedIndividuals::contains);
         }
         return selectedIndividuals;
     }
 
-    @Override
-    public Individual selectIndividual(int among, ArrayList<Individual> population) {
+    public Individual selectIndividual(ArrayList<Individual> population) {
         return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
     }
 }

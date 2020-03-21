@@ -15,8 +15,7 @@ public class TournamentSelection implements Selection {
         return selectedIndividuals;
     }
 
-    @Override
-    public Individual selectIndividual(int among, ArrayList<Individual> population){
+    private Individual selectIndividual(int among, ArrayList<Individual> population){
         ArrayList<Individual> randomIndividuals = new ArrayList<Individual>();
         for (int i = 0; i < among; i++)
             randomIndividuals.add(population.get((int)(Math.random() * population.size())));

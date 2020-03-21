@@ -17,7 +17,7 @@ public class EvolutionAlgorithm  implements Algorithm{
     private Individual bestIndividual;
     private double mutationProb = 0.1;
     private double crossoverProb = 0.7;
-    private int numberOfIndividualsForSelection = 5;
+    private int numberOfIndividualsForSelection = 9;
     private Crossover crossoverMethod;
     private Mutation mutationMethod;
     private Selection selectionMethod;
