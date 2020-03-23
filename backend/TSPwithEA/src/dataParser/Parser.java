@@ -1,6 +1,6 @@
 package dataParser;
 
-import problemInfo.Point;
+import problemInfo.City;
 import problemInfo.ProblemData;
 import problemInfo.ProblemType;
 
@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 public class Parser {
 
     private ProblemType problemType = ProblemType.PLANAR; // TODO: think
-    ArrayList<Point> points = new ArrayList<>();
+    ArrayList<City> cities = new ArrayList<>();
 
     public ProblemData parse(String fileName) {
         BufferedReader reader;
@@ -38,14 +38,14 @@ public class Parser {
             e.printStackTrace();
         }
 
-        return new ProblemData(points, problemType);
+        return new ProblemData(cities, problemType);
     }
 
 
     private void loadPoint(String line){
         StringTokenizer tokenizer = new StringTokenizer(line, "    ");
         tokenizer.nextToken();
-        points.add(new Point(Double.parseDouble(tokenizer.nextToken()), Double.parseDouble(tokenizer.nextToken())));
+        cities.add(new City(Double.parseDouble(tokenizer.nextToken()), Double.parseDouble(tokenizer.nextToken())));
     }
 }
 

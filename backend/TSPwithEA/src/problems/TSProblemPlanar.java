@@ -1,17 +1,17 @@
 package problems;
 
-import problemInfo.Point;
+import problemInfo.City;
 
 import java.util.ArrayList;
 
 public class TSProblemPlanar extends TSProblem {
 
-    public TSProblemPlanar(ArrayList<Point> allPoints) {
-        this.allPoints = allPoints;
+    public TSProblemPlanar(ArrayList<City> allCities) {
+        this.allCities = allCities;
     }
 
     @Override
-    public double countDistanceBetweenPoints(Point p1, Point p2){
+    public double countDistanceBetweenPoints(City p1, City p2){
         return Math.sqrt(Math.pow(p2.getX() - p1.getX(), 2) + Math.pow(p2.getY() - p1.getY(), 2));
     }
 
