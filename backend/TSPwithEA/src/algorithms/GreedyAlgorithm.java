@@ -94,11 +94,11 @@ public class GreedyAlgorithm implements Algorithm {
     private void fillGenotype(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){
         while (citiesToVisit.size() > 0){
             int closestPoint = findClosestPoint(genotype, citiesToVisit);
-            setGeneAndMarkAsVisited(genotype, citiesToVisit, closestPoint);
+            addGeneAndMarkAsVisited(genotype, citiesToVisit, closestPoint);
         }
     }
 
-    private void setGeneAndMarkAsVisited(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, int indexPoint){
+    private void addGeneAndMarkAsVisited(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, int indexPoint){
         addGene(genotype, indexPoint);
         markPointAsVisited(citiesToVisit, indexPoint);
     }
@@ -108,7 +108,7 @@ public class GreedyAlgorithm implements Algorithm {
     }
 
     private void addFirstGene(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, ArrayList<Integer> startingPoints){
-        setGeneAndMarkAsVisited(genotype, citiesToVisit, startPointIndex);
+        addGeneAndMarkAsVisited(genotype, citiesToVisit, startPointIndex);
         markPointAsVisited(startingPoints, startPointIndex);
     }
 

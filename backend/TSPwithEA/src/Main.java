@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData problemData = parser.parse("fl417.tsp");
+        ProblemData problemData = parser.parse("kroA100.tsp");
         TSProblem problem = null;
 
         switch (problemData.problemType){

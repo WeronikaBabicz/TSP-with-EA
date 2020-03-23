@@ -26,7 +26,6 @@ public class EvolutionAlgorithm  implements Algorithm{
     private Crossover crossoverMethod;
     private Mutation mutationMethod;
     private Selection selectionMethod;
-
     private Algorithm algorithmToInitializePopulation;
 
     public EvolutionAlgorithm(TSProblem problem, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod, Algorithm algorithmToInitializePopulation) {
@@ -52,7 +51,7 @@ public class EvolutionAlgorithm  implements Algorithm{
             ArrayList<Integer> genotype = new ArrayList<Integer>();
 
             fillRange(genotype, problem.allCities.size());
-            Collections.shuffle(genotype); // randomize elements
+            Collections.shuffle(genotype);
 
             Individual individual = new Individual(problem, genotype);
             population.add(individual);
@@ -80,7 +79,6 @@ public class EvolutionAlgorithm  implements Algorithm{
                 System.out.println("found best! In generation: "+ i);
                 System.out.println(currentBest.countFitness());
             }
-
         }
     }
 
