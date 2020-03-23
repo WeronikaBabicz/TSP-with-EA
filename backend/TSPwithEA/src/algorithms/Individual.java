@@ -8,7 +8,8 @@ public class Individual implements Cloneable{
     private ArrayList<Integer> genotype = new ArrayList<>();
     private TSProblem problem;
 
-    public Individual(TSProblem problem) {
+    public Individual(TSProblem problem, ArrayList<Integer> genotype) {
+        this.genotype = genotype;
         this.problem = problem;
     }
 
@@ -23,7 +24,7 @@ public class Individual implements Cloneable{
     }
 
     public double countFitness(){
-        return problem.countFitness(genotype);
+        return problem.calculateFitness(genotype);
     }
 
     public void setGenotype(ArrayList<Integer> genotype) {

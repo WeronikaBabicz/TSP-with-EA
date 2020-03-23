@@ -11,27 +11,12 @@ public class RandomAlgorithm implements Algorithm {
     private TSProblem problem;
     private ArrayList<Individual> population = new ArrayList<Individual>();
 
-    int populationSize = 1;
-    int generations = 1;
+    int populationSize;
 
-    public RandomAlgorithm(TSProblem problem) {
-        this.problem = problem;
-    }
-
-    public RandomAlgorithm(TSProblem problem, int populationSize, int generations) {
+    public RandomAlgorithm(TSProblem problem, int populationSize) {
         this.problem = problem;
         this.populationSize = populationSize;
-        this.generations = generations;
     }
-
-    public void setProblem(TSProblem problem) {
-        this.problem = problem;
-    }
-
-    public Individual getBestIndividual(){
-        return bestIndividual;
-    }
-
 
 
 
@@ -43,23 +28,20 @@ public class RandomAlgorithm implements Algorithm {
     @Override
     public void initializePopulation() {
         for (int i = 0; i < populationSize; i++){
-            Individual individual = new Individual(problem);
             ArrayList<Integer> genotype = new ArrayList<Integer>();
 
-            fillRange(genotype, problem.allPoints.size());
+            fillRange(genotype, problem.allCities.size());
             Collections.shuffle(genotype); // randomize elements
 
-            individual.setGenotype(genotype);
+            Individual individual = new Individual(problem, genotype);
             population.add(individual);
         }
     }
 
     @Override
     public void runAlgorithm() {
-        for (int i = 0; i < generations; i++){
-            initializePopulation();
-            setBestIndividual(findBestIndividual());
-        }
+        initializePopulation();
+        setBestIndividual(findBestIndividual());
     }
 
     @Override
@@ -67,11 +49,12 @@ public class RandomAlgorithm implements Algorithm {
         return bestIndividual;
     }
 
+    @Override
+    public ArrayList<Individual> getPopulation() {
+        return population;
+    }
 
     private void setBestIndividual(Individual bestIndividual){
         this.bestIndividual = bestIndividual;
     }
-
-
-
 }

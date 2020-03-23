@@ -7,8 +7,8 @@ import java.util.*;
 
 
 public class RouletteSelection implements Selection {
-    public static final double intervalLength = 7.0;
-    public static final double startingPoint = -5.0;
+    public static final double intervalLength = EvolutionAlgorithm.INTERVAL_LENGTH;
+    public static final double startingPoint = EvolutionAlgorithm.STARTING_POINT;
 
     @Override
     public ArrayList<Individual> select(int numberOfIndividualsForSelection, ArrayList<Individual> population) {

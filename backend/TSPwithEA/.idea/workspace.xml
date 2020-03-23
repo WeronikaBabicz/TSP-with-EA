@@ -4,6 +4,20 @@
     <list default="true" id="5e671876-5111-4651-80d6-cef2b02e2e10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Individual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/RandomAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/RandomAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/BestSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/BestSelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/RouletteSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/RouletteSelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/TournamentSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/TournamentSelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataParser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataParser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problemInfo/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problemInfo/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problemInfo/ProblemData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problemInfo/ProblemData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/TSProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/TSProblemGeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemGeo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/TSProblemPlanar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemPlanar.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +40,9 @@
   <component name="ProjectId" id="1Z2MWRB8pw5t6KEx7beqnBO9YqJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

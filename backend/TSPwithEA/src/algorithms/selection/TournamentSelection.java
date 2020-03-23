@@ -11,7 +11,7 @@ public class TournamentSelection implements Selection {
     public ArrayList<Individual> select(int numberOfIndividualsForSelection, ArrayList<Individual> population) {
         ArrayList<Individual> selectedIndividuals = new ArrayList<Individual>();
         for (int i = 0; i < numberOfIndividualsForSelection; i++)
-            selectedIndividuals.add(selectIndividual(numberOfIndividualsForSelection, population));
+            selectedIndividuals.add(new Individual(selectIndividual(numberOfIndividualsForSelection, population)));
         return selectedIndividuals;
     }
 

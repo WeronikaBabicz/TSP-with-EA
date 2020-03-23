@@ -11,65 +11,32 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class EvolutionAlgorithm  implements Algorithm{
-    private static final double percentOfBest = 0.002;
+    private static final double PERCENT_OF_BEST = 0.002;
+    private static final double MUTATION_PROB = 0.4;
+    private static final double CROSSOVER_PROB = 0.9;
+    private static final int INDIVIDUALS_TO_REPRODUCE = 400;
+    private static final int GENERATIONS = 1000;
+    public static final double INTERVAL_LENGTH = 1000;
+    public static final double STARTING_POINT = -5.0;
+    public static final int POPULATION_SIZE = 1500;
 
     private ArrayList<Individual> population = new ArrayList<Individual>();
     private TSProblem problem;
     private Individual bestIndividual;
-    private double mutationProb = 0.15;
-    private double crossoverProb = 0.8;
-    private int individualsToReproduce = 200;
     private Crossover crossoverMethod;
     private Mutation mutationMethod;
     private Selection selectionMethod;
 
-    private int populationSize = 1500;
-    private int generations = 1000;
+    private Algorithm algorithmToInitializePopulation;
 
-    public EvolutionAlgorithm(TSProblem problem) {
-        this.problem = problem;
-    }
-
-    public EvolutionAlgorithm(TSProblem problem, int populationSize, int generations) {
-        this.problem = problem;
-        this.populationSize = populationSize;
-        this.generations = generations;
-    }
-
-    public EvolutionAlgorithm(TSProblem problem, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod) {
+    public EvolutionAlgorithm(TSProblem problem, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod, Algorithm algorithmToInitializePopulation) {
         this.problem = problem;
         this.crossoverMethod = crossoverMethod;
         this.mutationMethod = mutationMethod;
         this.selectionMethod = selectionMethod;
+        this.algorithmToInitializePopulation = algorithmToInitializePopulation;
     }
 
-    public EvolutionAlgorithm(TSProblem problem, double mutationProb, double crossoverProb, int individualsToReproduce, Crossover crossoverMethod, Mutation mutationMethod, Selection selectionMethod, int populationSize, int generations) {
-        this.problem = problem;
-        this.mutationProb = mutationProb;
-        this.crossoverProb = crossoverProb;
-        this.individualsToReproduce = individualsToReproduce;
-        this.crossoverMethod = crossoverMethod;
-        this.mutationMethod = mutationMethod;
-        this.selectionMethod = selectionMethod;
-        this.populationSize = populationSize;
-        this.generations = generations;
-    }
-
-    public void setProblem(TSProblem problem) {
-        this.problem = problem;
-    }
-
-    public void setCrossoverMethod(Crossover crossoverMethod) {
-        this.crossoverMethod = crossoverMethod;
-    }
-
-    public void setMutationMethod(Mutation mutationMethod) {
-        this.mutationMethod = mutationMethod;
-    }
-
-    public void setSelectionMethod(Selection selectionMethod) {
-        this.selectionMethod = selectionMethod;
-    }
 
     @Override
     public Individual findBestIndividual() {
@@ -78,14 +45,16 @@ public class EvolutionAlgorithm  implements Algorithm{
 
     @Override
     public void initializePopulation() {
-        while (population.size() < populationSize){
-            Individual individual = new Individual(problem);
+        algorithmToInitializePopulation.initializePopulation();
+        population = algorithmToInitializePopulation.getPopulation();
+        int toFill = POPULATION_SIZE - population.size();
+        for (int i = 0; i < toFill; i++){
             ArrayList<Integer> genotype = new ArrayList<Integer>();
 
-            fillRange(genotype, problem.allPoints.size());
-            Collections.shuffle(genotype);
+            fillRange(genotype, problem.allCities.size());
+            Collections.shuffle(genotype); // randomize elements
 
-            individual.setGenotype(genotype);
+            Individual individual = new Individual(problem, genotype);
             population.add(individual);
         }
     }
@@ -95,7 +64,7 @@ public class EvolutionAlgorithm  implements Algorithm{
         initializePopulation();
         setBestIndividual(findBestIndividual());
 
-        for (int i = 0; i < generations; i++){
+        for (int i = 0; i < GENERATIONS; i++){
             ArrayList<Individual> newPopulation = new ArrayList<Individual>();
             ArrayList<Individual> selectedIndividualsToReproduce = selection();
 
@@ -120,6 +89,11 @@ public class EvolutionAlgorithm  implements Algorithm{
         return bestIndividual;
     }
 
+    @Override
+    public ArrayList<Individual> getPopulation() {
+        return population;
+    }
+
 
     private void mutatePopulation(ArrayList<Individual> newPopulation){
         for (int i = 0; i < newPopulation.size(); i++)
@@ -127,10 +101,10 @@ public class EvolutionAlgorithm  implements Algorithm{
     }
 
     private void fillPopulation(ArrayList<Individual> newPopulation){
-        ArrayList<Individual> best = selectionBest((int) ((populationSize - newPopulation.size()) * percentOfBest));
+        ArrayList<Individual> best = selectionBest((int) ((POPULATION_SIZE - newPopulation.size()) * PERCENT_OF_BEST));
         newPopulation.addAll(best);
-        while (newPopulation.size() < populationSize){
-            newPopulation.add(new Individual(population.get((int)(Math.random() * populationSize))));
+        while (newPopulation.size() < POPULATION_SIZE){
+            newPopulation.add(new Individual(population.get((int)(Math.random() * POPULATION_SIZE))));
         }
     }
 
@@ -146,16 +120,16 @@ public class EvolutionAlgorithm  implements Algorithm{
 
 
     private Individual crossover(Individual i1, Individual i2){
-        return (isBeingDone(crossoverProb)) ? crossoverMethod.cross(i1, i2) : new Individual(i1);
+        return (isBeingDone(CROSSOVER_PROB)) ? crossoverMethod.cross(i1, i2) : new Individual(i1);
     }
 
     private void mutate(Individual individual){
-        if (isBeingDone(mutationProb))
+        if (isBeingDone(MUTATION_PROB))
             mutationMethod.mutate(individual);
     }
 
     private ArrayList<Individual> selection(){
-        return selectionMethod.select(individualsToReproduce, population);
+        return selectionMethod.select(INDIVIDUALS_TO_REPRODUCE, population);
     }
 
     private boolean isBeingDone(double prob){

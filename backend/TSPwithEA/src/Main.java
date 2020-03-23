@@ -1,3 +1,4 @@
+import algorithms.Algorithm;
 import algorithms.EvolutionAlgorithm;
 import algorithms.GreedyAlgorithm;
 import algorithms.RandomAlgorithm;
@@ -5,11 +6,8 @@ import algorithms.crossover.Crossover;
 import algorithms.crossover.OrderedCrossover;
 import algorithms.mutation.InverseMutation;
 import algorithms.mutation.Mutation;
-import algorithms.mutation.SwapMutation;
-import algorithms.selection.BestSelection;
 import algorithms.selection.RouletteSelection;
 import algorithms.selection.Selection;
-import algorithms.selection.TournamentSelection;
 import problemInfo.ProblemData;
 import problems.TSProblem;
 import problems.TSProblemGeo;
@@ -18,32 +16,38 @@ import dataParser.*;
 
 public class Main {
 
-    public static final double points = 10.0;
+    public static final int POPULATION_TO_INITIALIZE = 20;
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData problemData = parser.parse("kroA100.tsp");
+        ProblemData problemData = parser.parse("fl417.tsp");
         TSProblem problem = null;
 
         switch (problemData.problemType){
             case PLANAR:
-                problem = new TSProblemPlanar(problemData.points);
+                problem = new TSProblemPlanar(problemData.cities);
                 break;
             case GEO:
-                problem = new TSProblemGeo(problemData.points);
+                problem = new TSProblemGeo(problemData.cities);
                 break;
         }
+
         Crossover crossover = new OrderedCrossover();
         Mutation mutation = new InverseMutation();
         Selection selection = new RouletteSelection();
+        Algorithm algorithmToInitializePopulation = new GreedyAlgorithm(problem, POPULATION_TO_INITIALIZE);
 
-        EvolutionAlgorithm ea = new EvolutionAlgorithm(problem, crossover, mutation, selection);
+        EvolutionAlgorithm ea = new  EvolutionAlgorithm(problem,
+                                                        crossover,
+                                                        mutation,
+                                                        selection,
+                                                        algorithmToInitializePopulation);
         ea.runAlgorithm();
 
-        GreedyAlgorithm ga = new GreedyAlgorithm(problem, 10);
+        GreedyAlgorithm ga = new GreedyAlgorithm(problem, problem.allCities.size());
         ga.runAlgorithm();
 
-        RandomAlgorithm ra = new RandomAlgorithm(problem);
+        RandomAlgorithm ra = new RandomAlgorithm(problem, POPULATION_TO_INITIALIZE);
         ra.runAlgorithm();
 
 
