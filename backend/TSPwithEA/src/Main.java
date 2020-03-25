@@ -13,6 +13,7 @@ import problems.TSProblem;
 import problems.TSProblemGeo;
 import problems.TSProblemPlanar;
 import dataParser.*;
+import resultsInfo.ResultsCSVWriter;
 
 public class Main {
 
@@ -35,7 +36,7 @@ public class Main {
         Crossover crossover = new OrderedCrossover();
         Mutation mutation = new InverseMutation();
         Selection selection = new RouletteSelection();
-        Algorithm algorithmToInitializePopulation = new GreedyAlgorithm(problem, POPULATION_TO_INITIALIZE);
+        Algorithm algorithmToInitializePopulation = new RandomAlgorithm(problem, POPULATION_TO_INITIALIZE);
 
         EvolutionAlgorithm ea = new  EvolutionAlgorithm(problem,
                                                         crossover,
@@ -47,9 +48,12 @@ public class Main {
         GreedyAlgorithm ga = new GreedyAlgorithm(problem, problem.allCities.size());
         ga.runAlgorithm();
 
-        RandomAlgorithm ra = new RandomAlgorithm(problem, POPULATION_TO_INITIALIZE);
+        RandomAlgorithm ra = new RandomAlgorithm(problem, problem.allCities.size());
         ra.runAlgorithm();
 
+
+        ResultsCSVWriter writer = new ResultsCSVWriter(ea.getGenerationScores());
+        writer.saveDataToSCV();
 
         System.out.println();
         System.out.println("EVOLUTION:");

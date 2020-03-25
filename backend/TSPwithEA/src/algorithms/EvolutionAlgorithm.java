@@ -55,8 +55,11 @@ public class EvolutionAlgorithm  extends Algorithm{
             mutatePopulation(newPopulation);
 
             population = newPopulation;
-
             Individual currentBest = findBestIndividual();
+
+            generation = i;
+            addGenerationInfoToGenerationScores();
+
             if (currentBest.countFitness() < bestIndividual.countFitness()){
                 setBestIndividual(currentBest);
                 System.out.println("found best! In generation: "+ i);

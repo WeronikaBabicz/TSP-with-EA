@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e671876-5111-4651-80d6-cef2b02e2e10" name="Default Changelist" comment="" />
+    <list default="true" id="5e671876-5111-4651-80d6-cef2b02e2e10" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resultsInfo/ResultsCSVWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +29,7 @@
   <component name="ProjectId" id="1Z2MWRB8pw5t6KEx7beqnBO9YqJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" />
   </component>

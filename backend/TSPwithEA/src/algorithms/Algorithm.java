@@ -10,12 +10,19 @@ import java.util.stream.Collectors;
 
 public abstract class Algorithm {
     ArrayList<Individual> population = new ArrayList<>();
+    private ArrayList<ArrayList<String>> generationScores = new ArrayList<ArrayList<String>>();
     Individual bestIndividual;
+    int generation;
     TSProblem problem;
     int populationSize;
 
+    public ArrayList<ArrayList<String>> getGenerationScores() {
+        return generationScores;
+    }
+
     abstract void initializePopulation();
     public abstract void runAlgorithm();
+
 
 
     Individual findBestIndividual(){
@@ -67,4 +74,15 @@ public abstract class Algorithm {
             population.add(individual);
         }
     }
+
+    void addGenerationInfoToGenerationScores(){
+        ArrayList<String> scores = new ArrayList<>();
+        scores.add(Double.toString(generation));
+        scores.add(Double.toString(Math.round(getBestFitness())));
+        scores.add(Double.toString(Math.round(getAverageFitness())));
+        scores.add(Double.toString(Math.round(getWorstFitness())));
+        generationScores.add(scores);
+    }
+
+
 }
