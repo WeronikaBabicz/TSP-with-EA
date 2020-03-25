@@ -16,13 +16,10 @@ public class RouletteSelection implements Selection {
         double worstFitness = (Collections.max(population, Comparator.comparingDouble(Individual::countFitness))).countFitness();
 
         ArrayList<Individual> selectedIndividuals = new ArrayList<Individual>();
-        //List<Double> probabilities = population.stream().map(Individual::countFitness).collect(Collectors.toList());
         ArrayList<Double> probabilities = new ArrayList<Double>();
         for (int i = 0; i < population.size(); i++){
             probabilities.add(probabilityFunction(population.get(i).countFitness(), bestFitness, worstFitness));
         }
-
-        //double probabilitiesSum = probabilities.stream().mapToDouble(Double::doubleValue).sum();
 
         while (selectedIndividuals.size() < numberOfIndividualsForSelection){
             for(int i = 0 ; i < population.size(); i++){

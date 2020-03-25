@@ -1,32 +1,18 @@
-
 package algorithms;
 
 import problemInfo.City;
 import problems.TSProblem;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-public class GreedyAlgorithm implements Algorithm {
-    private Individual bestIndividual;
-    private TSProblem problem;
-    private ArrayList<Individual> population = new ArrayList<Individual>();
-
-    private int populationSize;
+public class GreedyAlgorithm extends Algorithm {
     private int startPointIndex;
-
 
     public GreedyAlgorithm(TSProblem problem, int populationSize) {
         this.problem = problem;
         this.populationSize = populationSize;
     }
 
-
-    @Override
-    public Individual findBestIndividual() {
-        return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
-    }
 
     @Override
     public void initializePopulation() {
@@ -51,20 +37,6 @@ public class GreedyAlgorithm implements Algorithm {
     public void runAlgorithm() {
         initializePopulation();
         setBestIndividual(findBestIndividual());
-    }
-
-    @Override
-    public Individual getResult() {
-        return bestIndividual;
-    }
-
-    @Override
-    public ArrayList<Individual> getPopulation() {
-        return population;
-    }
-
-    private void setBestIndividual(Individual bestIndividual){
-        this.bestIndividual = bestIndividual;
     }
 
     private int findClosestPoint(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){

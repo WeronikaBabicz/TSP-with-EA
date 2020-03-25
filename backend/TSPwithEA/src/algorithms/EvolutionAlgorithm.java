@@ -10,19 +10,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class EvolutionAlgorithm  implements Algorithm{
-    private static final double PERCENT_OF_BEST = 0.002;
-    private static final double MUTATION_PROB = 0.4;
+public class EvolutionAlgorithm  extends Algorithm{
+    private static final double PERCENT_OF_BEST = 0.001;
+    private static final double MUTATION_PROB = 0.2;
     private static final double CROSSOVER_PROB = 0.9;
     private static final int INDIVIDUALS_TO_REPRODUCE = 400;
     private static final int GENERATIONS = 1000;
-    public static final double INTERVAL_LENGTH = 1000;
+    public static final double INTERVAL_LENGTH = 100;
     public static final double STARTING_POINT = -5.0;
-    public static final int POPULATION_SIZE = 1500;
+    private static final int POPULATION_SIZE = 1500;
 
-    private ArrayList<Individual> population = new ArrayList<Individual>();
-    private TSProblem problem;
-    private Individual bestIndividual;
     private Crossover crossoverMethod;
     private Mutation mutationMethod;
     private Selection selectionMethod;
@@ -38,24 +35,10 @@ public class EvolutionAlgorithm  implements Algorithm{
 
 
     @Override
-    public Individual findBestIndividual() {
-        return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
-    }
-
-    @Override
     public void initializePopulation() {
         algorithmToInitializePopulation.initializePopulation();
         population = algorithmToInitializePopulation.getPopulation();
-        int toFill = POPULATION_SIZE - population.size();
-        for (int i = 0; i < toFill; i++){
-            ArrayList<Integer> genotype = new ArrayList<Integer>();
-
-            fillRange(genotype, problem.allCities.size());
-            Collections.shuffle(genotype);
-
-            Individual individual = new Individual(problem, genotype);
-            population.add(individual);
-        }
+        fillPopulationWithRandoms(POPULATION_SIZE - population.size());
     }
 
     @Override
@@ -82,17 +65,6 @@ public class EvolutionAlgorithm  implements Algorithm{
         }
     }
 
-    @Override
-    public Individual getResult() {
-        return bestIndividual;
-    }
-
-    @Override
-    public ArrayList<Individual> getPopulation() {
-        return population;
-    }
-
-
     private void mutatePopulation(ArrayList<Individual> newPopulation){
         for (int i = 0; i < newPopulation.size(); i++)
             mutate(newPopulation.get(i));
@@ -102,7 +74,9 @@ public class EvolutionAlgorithm  implements Algorithm{
         ArrayList<Individual> best = selectionBest((int) ((POPULATION_SIZE - newPopulation.size()) * PERCENT_OF_BEST));
         newPopulation.addAll(best);
         while (newPopulation.size() < POPULATION_SIZE){
-            newPopulation.add(new Individual(population.get((int)(Math.random() * POPULATION_SIZE))));
+            int rand = (int)(Math.random() * POPULATION_SIZE);
+            if (!newPopulation.contains(population.get(rand)))
+                newPopulation.add(new Individual(population.get((int)(Math.random() * POPULATION_SIZE))));
         }
     }
 
@@ -138,10 +112,4 @@ public class EvolutionAlgorithm  implements Algorithm{
         Selection bestSelection = new BestSelection();
         return bestSelection.select(n, population);
     }
-
-
-    private void setBestIndividual(Individual bestIndividual){
-        this.bestIndividual = bestIndividual;
-    }
-
 }
