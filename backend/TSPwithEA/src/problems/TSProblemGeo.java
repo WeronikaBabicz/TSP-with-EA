@@ -11,7 +11,7 @@ public class TSProblemGeo extends TSProblem {
 
 
     @Override
-    public double countDistanceBetweenPoints(City p1, City p2) {
+    public double countDistanceBetweenCities(City p1, City p2) {
         double p1xinRad = Math.toRadians(p1.getX());
         double p1yinRad = Math.toRadians(p1.getY());
         double p2xinRad = Math.toRadians(p2.getX());

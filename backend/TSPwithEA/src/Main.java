@@ -21,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         Parser parser = new Parser();
-        ProblemData problemData = parser.parse("kroA100.tsp");
+        ProblemData problemData = parser.parse("kroA150.tsp");
         TSProblem problem = null;
 
         switch (problemData.problemType){

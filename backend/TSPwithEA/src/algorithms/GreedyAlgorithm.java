@@ -6,7 +6,7 @@ import problems.TSProblem;
 import java.util.ArrayList;
 
 public class GreedyAlgorithm extends Algorithm {
-    private int startPointIndex;
+    private int startCityIndex;
 
     public GreedyAlgorithm(TSProblem problem, int populationSize) {
         this.problem = problem;
@@ -16,17 +16,17 @@ public class GreedyAlgorithm extends Algorithm {
 
     @Override
     public void initializePopulation() {
-        ArrayList<Integer> startingPoints = initializeCitiesToVisit();
+        ArrayList<Integer> startingCities = initializeCitiesToVisit();
         int min = Math.min(populationSize, problem.allCities.size());
         for (int i = 0; i < min; i++){
 
             ArrayList<Integer> genotype = new ArrayList<Integer>();
-            ArrayList<Integer> pointsToVisit = initializeCitiesToVisit();
+            ArrayList<Integer> citiesToVisit = initializeCitiesToVisit();
 
-            startPointIndex = startingPoints.get((int) (Math.random() * startingPoints.size()));
+            startCityIndex = startingCities.get((int) (Math.random() * startingCities.size()));
 
-            addFirstGene(genotype, pointsToVisit, startingPoints);
-            fillGenotype(genotype, pointsToVisit);
+            addFirstGene(genotype, citiesToVisit, startingCities);
+            fillGenotype(genotype, citiesToVisit);
 
             Individual individual = new Individual(problem, genotype);
             population.add(individual);
@@ -39,19 +39,19 @@ public class GreedyAlgorithm extends Algorithm {
         setBestIndividual(findBestIndividual());
     }
 
-    private int findClosestPoint(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){
+    private int findClosestCity(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){
         int closest = citiesToVisit.get(0);
 
         City lastVisited = problem.allCities.get(genotype.get(genotype.size() - 1));
         City nextToVisit = problem.allCities.get(citiesToVisit.get(0));
 
-        double bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
+        double bestDist = problem.countDistanceBetweenCities(lastVisited, nextToVisit);
 
         for (int j = 0; j < citiesToVisit.size(); j++){
             nextToVisit = problem.allCities.get(citiesToVisit.get(j));
-            if (bestDist > problem.countDistanceBetweenPoints(lastVisited, nextToVisit)){
+            if (bestDist > problem.countDistanceBetweenCities(lastVisited, nextToVisit)){
                 closest = citiesToVisit.get(j);
-                bestDist = problem.countDistanceBetweenPoints(lastVisited, nextToVisit);
+                bestDist = problem.countDistanceBetweenCities(lastVisited, nextToVisit);
             }
         }
         return closest;
@@ -65,26 +65,26 @@ public class GreedyAlgorithm extends Algorithm {
 
     private void fillGenotype(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){
         while (citiesToVisit.size() > 0){
-            int closestPoint = findClosestPoint(genotype, citiesToVisit);
+            int closestPoint = findClosestCity(genotype, citiesToVisit);
             addGeneAndMarkAsVisited(genotype, citiesToVisit, closestPoint);
         }
     }
 
-    private void addGeneAndMarkAsVisited(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, int indexPoint){
-        addGene(genotype, indexPoint);
-        markPointAsVisited(citiesToVisit, indexPoint);
+    private void addGeneAndMarkAsVisited(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, int cityIndex){
+        addGene(genotype, cityIndex);
+        markCityAsVisited(citiesToVisit, cityIndex);
     }
 
-    private void markPointAsVisited(ArrayList<Integer> citiesToVisit ,int pointIndex){
-        citiesToVisit.remove(Integer.valueOf(pointIndex));
+    private void markCityAsVisited(ArrayList<Integer> citiesToVisit , int cityIndex){
+        citiesToVisit.remove(Integer.valueOf(cityIndex));
     }
 
-    private void addFirstGene(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, ArrayList<Integer> startingPoints){
-        addGeneAndMarkAsVisited(genotype, citiesToVisit, startPointIndex);
-        markPointAsVisited(startingPoints, startPointIndex);
+    private void addFirstGene(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit, ArrayList<Integer> startingCities){
+        addGeneAndMarkAsVisited(genotype, citiesToVisit, startCityIndex);
+        markCityAsVisited(startingCities, startCityIndex);
     }
 
-    private void addGene(ArrayList<Integer> genotype, int indexPoint){
-        genotype.add(indexPoint);
+    private void addGene(ArrayList<Integer> genotype, int cityIndex){
+        genotype.add(cityIndex);
     }
 }

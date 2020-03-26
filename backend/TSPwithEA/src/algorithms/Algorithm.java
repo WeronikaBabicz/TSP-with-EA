@@ -29,28 +29,37 @@ public abstract class Algorithm {
         return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
     }
 
-    Individual findWorstIndividual(){
+    private Individual findWorstIndividual(){
         return Collections.max(population, Comparator.comparingDouble(Individual::countFitness));
     }
 
-    public double getBestFitness(){
+    private double getBestFitness(){
         return findBestIndividual().countFitness();
     }
 
-    public double getWorstFitness(){
+    private double getWorstFitness(){
         return findWorstIndividual().countFitness();
     }
 
-    public double getAverageFitness(){
+    private double getAverageFitness(){
         List<Double> fitness = population.stream().map(Individual::countFitness).collect(Collectors.toList());
-        return fitness.stream().mapToDouble(Double::doubleValue).sum()/population.size();
+        return fitness.stream().mapToDouble(Double::doubleValue).sum()/populationSize;
+    }
+
+    private double getStandardDeviation(){
+        double average = getAverageFitness();
+        List<Double> fitness = population.stream().map(Individual::countFitness).collect(Collectors.toList());
+        for (int i = 0; i < fitness.size(); i++)
+            fitness.set(i, Math.pow(fitness.get(i) - average, 2)/populationSize);
+
+        return Math.sqrt(fitness.stream().mapToDouble(Double::doubleValue).sum());
     }
 
     public Individual getResult() {
         return bestIndividual;
     }
 
-    public ArrayList<Individual> getPopulation() {
+    ArrayList<Individual> getPopulation() {
         return population;
     }
 
@@ -78,11 +87,10 @@ public abstract class Algorithm {
     void addGenerationInfoToGenerationScores(){
         ArrayList<String> scores = new ArrayList<>();
         scores.add(Double.toString(generation));
-        scores.add(Double.toString(Math.round(getBestFitness())));
-        scores.add(Double.toString(Math.round(getAverageFitness())));
-        scores.add(Double.toString(Math.round(getWorstFitness())));
+        scores.add(Double.toString(getBestFitness()));
+        scores.add(Double.toString(getAverageFitness()));
+        scores.add(Double.toString(getWorstFitness()));
+        scores.add(Double.toString(getStandardDeviation()));
         generationScores.add(scores);
     }
-
-
 }

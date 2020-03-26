@@ -12,8 +12,6 @@ public class SwapMutation implements Mutation {
         int idx2 = generateRandomIndex(genotype);
 
         swapGenes(genotype, idx1, idx2);
-
-        individual.setGenotype(genotype); //TODO: necessary? since ArrayList<Integer> genotype = individual.getGenotype();
     }
 }
 

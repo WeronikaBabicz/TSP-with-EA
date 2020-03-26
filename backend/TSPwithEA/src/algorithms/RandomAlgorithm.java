@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class RandomAlgorithm extends Algorithm {
-    private int populationSize;
 
     public RandomAlgorithm(TSProblem problem, int populationSize) {
         this.problem = problem;

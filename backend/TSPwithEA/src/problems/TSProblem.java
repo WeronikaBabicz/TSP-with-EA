@@ -11,12 +11,12 @@ public abstract class TSProblem {
 
         double fitnessScore = 0;
         for (int i = 0; i < genotype.size() - 1; i++){
-            fitnessScore += countDistanceBetweenPoints(allCities.get(genotype.get(i)), allCities.get(genotype.get(i+1)));
+            fitnessScore += countDistanceBetweenCities(allCities.get(genotype.get(i)), allCities.get(genotype.get(i+1)));
         }
-        fitnessScore += countDistanceBetweenPoints(allCities.get(genotype.get(genotype.size() -1)), allCities.get(genotype.get(0)));
+        fitnessScore += countDistanceBetweenCities(allCities.get(genotype.get(genotype.size() -1)), allCities.get(genotype.get(0)));
         return fitnessScore;
     }
 
 
-    abstract public double countDistanceBetweenPoints(City p1, City p2);
+    abstract public double countDistanceBetweenCities(City p1, City p2);
 }

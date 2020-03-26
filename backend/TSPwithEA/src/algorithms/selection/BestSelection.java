@@ -18,7 +18,7 @@ public class BestSelection implements Selection {
         return selectedIndividuals;
     }
 
-    public Individual selectIndividual(ArrayList<Individual> population) {
+    private Individual selectIndividual(ArrayList<Individual> population) {
         return Collections.min(population, Comparator.comparingDouble(Individual::countFitness));
     }
 }

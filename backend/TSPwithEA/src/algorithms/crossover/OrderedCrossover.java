@@ -26,7 +26,7 @@ public class OrderedCrossover implements Crossover{
 
         for (int i = 0; i < genotype.size(); i++){
             if (i < startIndex || i > endIndex){
-                genotype.set(i, notUsedGenes.get(0)); //TODO: works?
+                genotype.set(i, notUsedGenes.get(0));
                 notUsedGenes.remove(0);
             }
         }

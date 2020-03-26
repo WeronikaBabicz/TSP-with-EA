@@ -5,7 +5,7 @@ import problems.TSProblem;
 import java.util.ArrayList;
 
 public class Individual implements Cloneable{
-    private ArrayList<Integer> genotype = new ArrayList<>();
+    private ArrayList<Integer> genotype;
     private TSProblem problem;
 
     public Individual(TSProblem problem, ArrayList<Integer> genotype) {
@@ -15,7 +15,7 @@ public class Individual implements Cloneable{
 
     public Individual(Individual another) {
         this.problem = another.problem;
-        this.genotype = (ArrayList<Integer>) another.genotype.clone(); // Hope it's a deep copy
+        this.genotype = (ArrayList<Integer>) another.genotype.clone();
         //this.genotype = new ArrayList<>(another.genotype);
     }
 
@@ -33,10 +33,10 @@ public class Individual implements Cloneable{
 
     @Override
     public String toString(){
-        String ret = "";
-        for (int i = 0; i < genotype.size(); i++){
-            ret += genotype.get(i) + " ";
+        StringBuilder ret = new StringBuilder();
+        for (Integer integer : genotype) {
+            ret.append(integer).append(" ");
         }
-        return ret;
+        return ret.toString();
     }
 }

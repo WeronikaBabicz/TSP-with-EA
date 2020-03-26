@@ -11,7 +11,7 @@ public class TSProblemPlanar extends TSProblem {
     }
 
     @Override
-    public double countDistanceBetweenPoints(City p1, City p2){
+    public double countDistanceBetweenCities(City p1, City p2){
         return Math.sqrt(Math.pow(p2.getX() - p1.getX(), 2) + Math.pow(p2.getY() - p1.getY(), 2));
     }
 

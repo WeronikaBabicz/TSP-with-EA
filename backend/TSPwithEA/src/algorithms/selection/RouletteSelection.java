@@ -7,8 +7,8 @@ import java.util.*;
 
 
 public class RouletteSelection implements Selection {
-    public static final double intervalLength = EvolutionAlgorithm.INTERVAL_LENGTH;
-    public static final double startingPoint = EvolutionAlgorithm.STARTING_POINT;
+    private static final double intervalLength = EvolutionAlgorithm.INTERVAL_LENGTH;
+    private static final double startingPoint = EvolutionAlgorithm.STARTING_POINT;
 
     @Override
     public ArrayList<Individual> select(int numberOfIndividualsForSelection, ArrayList<Individual> population) {
@@ -17,10 +17,9 @@ public class RouletteSelection implements Selection {
 
         ArrayList<Individual> selectedIndividuals = new ArrayList<Individual>();
         ArrayList<Double> probabilities = new ArrayList<Double>();
-        for (int i = 0; i < population.size(); i++){
-            probabilities.add(probabilityFunction(population.get(i).countFitness(), bestFitness, worstFitness));
+        for (Individual individual : population) {
+            probabilities.add(probabilityFunction(individual.countFitness(), bestFitness, worstFitness));
         }
-
         while (selectedIndividuals.size() < numberOfIndividualsForSelection){
             for(int i = 0 ; i < population.size(); i++){
                 if (isBeingDone(probabilities.get(i)))

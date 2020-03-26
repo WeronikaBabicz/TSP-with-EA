@@ -11,8 +11,8 @@ import java.util.StringTokenizer;
 
 public class Parser {
 
-    private ProblemType problemType = ProblemType.PLANAR; // TODO: think
-    ArrayList<City> cities = new ArrayList<>();
+    private ProblemType problemType = ProblemType.PLANAR;
+    private ArrayList<City> cities = new ArrayList<>();
 
     public ProblemData parse(String fileName) {
         BufferedReader reader;

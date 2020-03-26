@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.util.*;
 
 public class ResultsCSVWriter {
-    ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+    private ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
 
     public ResultsCSVWriter(ArrayList<ArrayList<String>> data) {
         this.data = data;
@@ -20,6 +20,8 @@ public class ResultsCSVWriter {
             csvWriter.append("Average");
             csvWriter.append(",");
             csvWriter.append("Worst");
+            csvWriter.append(",");
+            csvWriter.append("Standard deviation");
             csvWriter.append("\n");
 
             for (List<String> rowData : data) {
