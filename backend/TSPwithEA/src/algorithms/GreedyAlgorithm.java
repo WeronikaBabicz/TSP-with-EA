@@ -37,6 +37,7 @@ public class GreedyAlgorithm extends Algorithm {
     public void runAlgorithm() {
         initializePopulation();
         setBestIndividual(findBestIndividual());
+        addGenerationInfoToGenerationScores();
     }
 
     private int findClosestCity(ArrayList<Integer> genotype, ArrayList<Integer> citiesToVisit){
@@ -47,10 +48,10 @@ public class GreedyAlgorithm extends Algorithm {
 
         double bestDist = problem.countDistanceBetweenCities(lastVisited, nextToVisit);
 
-        for (int j = 0; j < citiesToVisit.size(); j++){
-            nextToVisit = problem.allCities.get(citiesToVisit.get(j));
-            if (bestDist > problem.countDistanceBetweenCities(lastVisited, nextToVisit)){
-                closest = citiesToVisit.get(j);
+        for (Integer integer : citiesToVisit) {
+            nextToVisit = problem.allCities.get(integer);
+            if (bestDist > problem.countDistanceBetweenCities(lastVisited, nextToVisit)) {
+                closest = integer;
                 bestDist = problem.countDistanceBetweenCities(lastVisited, nextToVisit);
             }
         }

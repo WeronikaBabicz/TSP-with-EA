@@ -23,6 +23,7 @@ public class RandomAlgorithm extends Algorithm {
     public void runAlgorithm() {
         initializePopulation();
         setBestIndividual(findBestIndividual());
+        addGenerationInfoToGenerationScores();
     }
 
 }

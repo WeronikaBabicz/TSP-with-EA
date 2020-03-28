@@ -5,21 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scores.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scores.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Algorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/EvolutionAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/GreedyAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Individual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/RandomAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/RandomAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/crossover/OrderedCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/crossover/OrderedCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/mutation/SwapMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mutation/SwapMutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/BestSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/BestSelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/RouletteSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/RouletteSelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/selection/Selection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/selection/Selection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataParser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataParser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/TSProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/TSProblemGeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemGeo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/TSProblemPlanar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/TSProblemPlanar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resultsInfo/ResultsCSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resultsInfo/ResultsCSVWriter.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
